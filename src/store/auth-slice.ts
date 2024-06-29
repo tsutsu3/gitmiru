@@ -9,7 +9,7 @@ export interface AuthSlice {
   setFirstVisit: (firstVisit: boolean) => void;
 }
 
-export const createAuthSlice: StoreSlice<AuthSlice> = (set, get) => ({
+export const createAuthSlice: StoreSlice<AuthSlice> = (set) => ({
   pat: undefined,
   endpoint: undefined,
   firstVisit: true,
