@@ -1,5 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import { config } from "dotenv";
+
+config();
+
+const base = (() => {
+  if (process.env.NODE_ENV === "production") {
+    if (process.env.VITE_GITHUB_PAGES_REPO_NAME) {
+      return `/${process.env.VITE_GITHUB_PAGES_REPO_NAME}/`;
+    }
+    return "/";
+  }
+})();
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,5 +29,5 @@ export default defineConfig({
       "@src/": new URL("./src/", import.meta.url).pathname,
     },
   },
-  base: "./",
+  base: base,
 });

@@ -5,13 +5,27 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/Login";
 
-const router = createBrowserRouter([
+const basename = (() => {
+  if (import.meta.env.PROD) {
+    if (import.meta.env.VITE_GITHUB_PAGES_REPO_NAME) {
+      return `/${import.meta.env.VITE_GITHUB_PAGES_REPO_NAME}`;
+    }
+    return "/";
+  }
+})();
+
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <LoginPage />,
+      errorElement: <NotFound />,
+    },
+  ],
   {
-    path: "/",
-    element: <LoginPage />,
-    errorElement: <NotFound />,
+    basename: basename,
   },
-]);
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
