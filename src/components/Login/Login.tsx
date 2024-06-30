@@ -3,6 +3,7 @@ import { MarkGithubIcon, XIcon } from "@primer/octicons-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "@context/useAuth";
+import { basename } from "@constants/app";
 
 interface SetErrorMessageFunction {
   (message: string): void;
@@ -134,10 +135,10 @@ const Callout: React.FC = () => (
     }}
   >
     <Text as="p" fontSize={1} m={0} pb={1}>
-      <Link href="/">Sign in with a passkey</Link>
+      <Link href={basename}>Sign in with a passkey</Link>
     </Text>
     <Text as="p" fontSize={1} m={0} p={0}>
-      New to GitHub? <Link href="/">Create an account</Link>
+      New to GitHub? <Link href={basename}>Create an account</Link>
     </Text>
   </Box>
 );

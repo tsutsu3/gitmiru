@@ -1,6 +1,7 @@
 import React from "react";
 import { Header, Octicon, Button } from "@primer/react";
 import { MarkGithubIcon } from "@primer/octicons-react";
+import { basename } from "@constants/app";
 
 const AppHeader: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const AppHeader: React.FC = () => {
     >
       <Header.Item full>
         <Header.Link
-          href="/"
+          href={basename}
           sx={{
             fontSize: 2,
           }}
@@ -30,7 +31,7 @@ const AppHeader: React.FC = () => {
         <Header.Item>
           <Button
             as="a"
-            href="/"
+            href={basename}
             size="small"
             variant="invisible"
             sx={{

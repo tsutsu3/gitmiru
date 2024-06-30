@@ -9,8 +9,8 @@ const base = (() => {
     if (process.env.VITE_GITHUB_PAGES_REPO_NAME) {
       return `/${process.env.VITE_GITHUB_PAGES_REPO_NAME}/`;
     }
-    return "/";
   }
+  return "/";
 })();
 
 // https://vitejs.dev/config/

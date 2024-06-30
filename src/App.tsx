@@ -6,17 +6,9 @@ import LoginPage from "@pages/Login";
 import DashboardPage from "@pages/Dashboard";
 import PrivateRoute from "@components/PrivateRoute";
 import PublicRoute from "@components/PublicRoute";
+import { basename } from "@constants/app";
 
 import { AuthProvider } from "@context/auth-context";
-
-const basename = (() => {
-  if (import.meta.env.PROD) {
-    if (import.meta.env.VITE_GITHUB_PAGES_REPO_NAME) {
-      return `/${import.meta.env.VITE_GITHUB_PAGES_REPO_NAME}`;
-    }
-    return "/";
-  }
-})();
 
 const router = createBrowserRouter(
   [
