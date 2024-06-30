@@ -3,16 +3,16 @@ import { StoreSlice } from "./store";
 export interface AuthSlice {
   pat?: string;
   endpoint?: string;
-  firstVisit: boolean;
+  isAuthenticated: boolean;
   setPat: (pat: string) => void;
   setEndpoint: (endpoint: string) => void;
-  setFirstVisit: (firstVisit: boolean) => void;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
 
 export const createAuthSlice: StoreSlice<AuthSlice> = (set) => ({
   pat: undefined,
   endpoint: undefined,
-  firstVisit: true,
+  isAuthenticated: false,
   setPat: (pat: string) => {
     set((prev: AuthSlice) => ({
       ...prev,
@@ -25,10 +25,10 @@ export const createAuthSlice: StoreSlice<AuthSlice> = (set) => ({
       endpoint: endpoint,
     }));
   },
-  setFirstVisit: (firstVisit: boolean) => {
+  setIsAuthenticated: (isAuthenticated: boolean) => {
     set((prev: AuthSlice) => ({
       ...prev,
-      firstVisit: firstVisit,
+      isAuthenticated: isAuthenticated,
     }));
   },
 });

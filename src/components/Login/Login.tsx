@@ -1,6 +1,8 @@
 import { Text, Box, Octicon, Link, Flash, IconButton, FormControl, TextInput, Button } from "@primer/react";
 import { MarkGithubIcon, XIcon } from "@primer/octicons-react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "@context/useAuth";
 
 interface SetErrorMessageFunction {
   (message: string): void;
@@ -59,6 +61,8 @@ const FlashError: React.FC<FlashMessageProps> = ({ showFlash, message, setShowFl
 const FormBox: React.FC<FormBoxProps> = ({ setErrorMessage, setShowFlash }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -72,6 +76,8 @@ const FormBox: React.FC<FormBoxProps> = ({ setErrorMessage, setShowFlash }) => {
     if (username === "test" && password === "test") {
       setErrorMessage("");
       setShowFlash(false);
+      login();
+      navigate("/");
       return true;
     }
     throw new Error("Incorrect username or password. ");

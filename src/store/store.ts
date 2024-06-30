@@ -9,11 +9,8 @@ export type StoreSlice<T> = (set: StoreApi<StoreState>["setState"], get: StoreAp
 export const createPartializedState = (state: StoreState) => ({
   pat: state.pat,
   endpoint: state.endpoint,
-  firstVisit: state.firstVisit,
+  isAuthenticated: state.isAuthenticated,
 });
-
-const aaa_aaa = 1;
-console.log(aaa_aaa);
 
 const useStore = create<StoreState>()(
   persist(
