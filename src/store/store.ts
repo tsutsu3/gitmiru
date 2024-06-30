@@ -1,5 +1,5 @@
 import { StoreApi, create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { AuthSlice, createAuthSlice } from "./auth-slice";
 
 export type StoreState = AuthSlice;
@@ -21,6 +21,7 @@ const useStore = create<StoreState>()(
       name: "gitmiru",
       partialize: (state) => createPartializedState(state),
       version: 1,
+      storage: createJSONStorage(() => sessionStorage),
     },
   ),
 );
